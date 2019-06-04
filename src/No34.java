@@ -36,8 +36,6 @@ public class No34 {
         return new int[]{first, last};
     }
 
-
-
     public static void main(String[] args) {
         searchRange(new int[]{2, 2}, 3);
     }
