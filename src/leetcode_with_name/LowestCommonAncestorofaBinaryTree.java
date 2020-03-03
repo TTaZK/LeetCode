@@ -18,4 +18,8 @@ public class LowestCommonAncestorofaBinaryTree {
         if (left != null && right != null) return root;
         return left == null ? right : left;
     }
+
+    public static void main(String[] args) {
+        System.out.println("this is a test");
+    }
 }
