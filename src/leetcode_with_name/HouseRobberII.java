@@ -8,7 +8,7 @@ public class HouseRobberII {
     // 取最大值
     public int rob(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
-        if (nums.length == 1) return nums[0;
+        if (nums.length == 1) return nums[0];
         return Math.max(robWithoutCircle(Arrays.copyOfRange(nums, 0, nums.length - 1)), robWithoutCircle(Arrays.copyOfRange(nums, 1, nums.length)));
     }
 
