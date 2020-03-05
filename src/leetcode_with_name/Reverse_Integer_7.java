@@ -31,7 +31,27 @@ public class Reverse_Integer_7 {
         return result;
     }
 
+    // 依次从个位求出当前位的数字，累计叠加
+    public static int reverse_2(int x) {
+        // 如果用 int 存储result，那么在 result * 10 的时候，可能就发生了溢出，导致result的值失效
+        // 从而 temp 的计算结果就失效
+        long result = 0;
+        while (x != 0) {
+            int tail = x % 10;
+            // 暂时用long存储当前结果，防止溢出报错
+            long temp = tail + result * 10;
+            if (temp > Integer.MAX_VALUE || temp < Integer.MIN_VALUE) {
+                return 0;
+            }
+            result = temp;
+            // step to next
+            x = x / 10;
+        }
+        return (int) result;
+    }
+
     public static void main(String[] args) {
-        System.out.println(reverse(2147483647));
+        //System.out.println(reverse_2(1534236469));
+        //System.out.println(964632435 * 10);
     }
 }
