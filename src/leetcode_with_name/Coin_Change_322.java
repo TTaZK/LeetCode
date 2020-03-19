@@ -34,6 +34,8 @@ public class Coin_Change_322 {
     // https://www.kancloud.cn/kancloud/pack/70126
     // 结合完全背包的优化思路，可以对找零钱问题进行同样的优化
     // f[i][j]=min( f[i－1][ j ], f [i ] [ j - value[i] ] + 1) ，注意后面是f[i, j-value[i]]，i 没有减1
+    // 可以抽象成一维数组 f[v]=min{f[v],f[v-c[i]]+w[i]}
+    // 下面的二维数组实现没有ac
     public int coinChange2(int[] coins, int amount) {
         if (amount <= 0) return -1;
         int[][] f = new int[coins.length + 1][amount + 1];
@@ -59,5 +61,26 @@ public class Coin_Change_322 {
             }
         }
         return f[coins.length][amount] == Integer.MAX_VALUE ? -1 : f[coins.length][amount];
+    }
+
+    // f[j] = min{f[j],f[j-c[i]]+1}
+    public int coinChange3(int[] coins, int amount) {
+        if (amount <= 0) return 0;
+        int[] f = new int[amount + 1];
+        for (int i = 1; i <= amount; i++) {
+            // 默认不能找零
+            f[i] = Integer.MAX_VALUE;
+            for (int j = 1; j <= coins.length; j++) {
+                // 总钱数大于当前硬币面额 && 如果换了当前硬币之后能够成功找零
+                if (i >= coins[j - 1] && f[i - coins[j - 1]] != Integer.MAX_VALUE) {
+                    f[i] = Math.min(f[i], f[i - coins[j - 1]] + 1);
+                }
+            }
+        }
+        if (f[amount] == Integer.MAX_VALUE)
+            return -1;
+        else
+            return f[amount];
+
     }
 }
