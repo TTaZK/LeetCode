@@ -28,7 +28,7 @@ public class Coin_Change_322 {
         return f[coins.length][amount] == 0 ? -1 : f[coins.length][amount];
     }
 
-    // 在 0/1 背包问题中
+    // 在 0/1 背包问题中:数组f[i][j]表示，在只有i个物品，容量为j的情况下背包问题的最优解
     // 第i次循环中的状态f[i][v]是由状态f[i-1][v-c[i]]递推而来。换句话说，这正是为了保证每件物品只选一次，保证在考虑“选入第i件物品”这件策略时，依据的是一个绝无已经选入第i件物品的子结果f[i-1][v-c[i]]。
     // 而现在完全背包的特点恰是每种物品可选无限件，所以在考虑“加选一件第i种物品”这种策略时，却正需要一个可能已选入第i种物品的子结果f[i][v-c[i]]；此时f[i][v]=max{f[i-1][v],f[i][v-c[i]]+w[i]}
     // https://www.kancloud.cn/kancloud/pack/70126
