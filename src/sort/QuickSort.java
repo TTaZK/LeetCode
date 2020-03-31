@@ -2,7 +2,7 @@ package sort;
 
 import java.util.PriorityQueue;
 
-public class QuickSort {
+public class                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   QuickSort {
 
     public void quickSort(int[] nums) {
         quickSort(nums, 0, nums.length - 1);
