@@ -1,3 +1,7 @@
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.BlockingQueue;
+
 public class AliTest {
     public static Integer max(int[] level, int[] commission, int[] worker) {
         int max_benefit = 0;
@@ -18,6 +22,7 @@ public class AliTest {
     }
 
     public static void main(String[] args) {
-
+        ThreadLocal<Integer> t = new ThreadLocal<>();
+        BlockingQueue queue = new ArrayBlockingQueue(2);
     }
 }
