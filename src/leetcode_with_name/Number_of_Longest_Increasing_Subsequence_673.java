@@ -30,4 +30,40 @@ public class Number_of_Longest_Increasing_Subsequence_673 {
         }
         return res;
     }
+
+    // rewrite
+    // 未排序数组最长递增子序列长度（子序列不是子数组）
+    // f[i]表示到i位置最长子序列的长度
+    // 依次比较i与 i-1,i-2...0位置上元素的大小，f[i] = max{f[j]}+1 其中 0<=j<i, 并且f[j] < f[i]
+    // 求出最长子序列的长度之后，需要再求出最长子序列的数目
+    // LIS 没有问题，但是统计数目出现问题
+    public static int findNumberOfLIS1(int[] nums) {
+        if (nums.length <= 1) return nums.length;
+        int[] f = new int[nums.length];
+        f[0] = 1;
+        for (int i = 1; i < nums.length; i++) {
+            f[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (nums[j] < nums[i]) {
+                    f[i] = Math.max(f[i], f[j] + 1);
+                }
+            }
+        }
+        int max = 1;
+        int num = 1;
+        for (int len : f) {
+            if (max < len) {
+                num = 1;
+            } else if (max == len) {
+                num++;
+            }
+            max = Math.max(max, len);
+        }
+        return num;
+    }
+
+    public static void main(String[] args) {
+        int[] a = new int[]{1, 3, 5, 4, 7};
+        findNumberOfLIS1(a);
+    }
 }

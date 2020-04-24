@@ -32,12 +32,27 @@ public class Longest_Substring_Without_Repeating_Characters_3 {
     }
 
     // rewrite
+    // not ac
     public static int lengthOfLongestSubstring1(String s) {
         int[] f = new int[s.length()];
         f[0] = 1;
         for (int i = 1; i < s.length(); i++) {
-
+            // 初始值
+            f[i] = f[i-1] + 1;
+            // 找出前面与当前位置相同的index
+            for (int j = i - 1; j >= f[i - 1]; j--) {
+                if (s.charAt(j) == s.charAt(i)) {
+                    f[i] = i - j;
+                    break;
+                }
+            }
         }
+
+        int max = 0;
+        for (int len : f) {
+            max = Math.max(max, len);
+        }
+        return max;
 
     }
 
