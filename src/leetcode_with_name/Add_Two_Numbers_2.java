@@ -1,6 +1,6 @@
 package leetcode_with_name;
 
-public class AddTwoNumbers {
+public class Add_Two_Numbers_2 {
     class ListNode {
         int val;
         ListNode next;
