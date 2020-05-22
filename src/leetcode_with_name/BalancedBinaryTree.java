@@ -16,7 +16,7 @@ public class BalancedBinaryTree {
         if (isBalanced(root.left) && isBalanced(root.right)) {
             int left = depth(root.left);
             int right = depth(root.right);
-            return Math.abs(left - right) <= 1 ? true : false;
+            return Math.abs(left - right) <= 1;
         }
         return false;
     }
